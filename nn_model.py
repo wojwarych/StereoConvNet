@@ -137,7 +137,7 @@ def load_StereoImages(dirpath='/Users/Wojtek/Documents/Python Projects/DepthMap_
 	return X_train, X_left_train, X_right_train, y_train, X_valid, X_left_valid, X_right_valid, y_valid
 
 
-def build_stereo_cnn(input_var=None):
+def build_stereo_cnn(input_var=None, in_shape_1=100, in_shape_2=150):
 	
 	conv_num_filters1 = 16
 	conv_num_filters2 = 32
@@ -154,7 +154,7 @@ def build_stereo_cnn(input_var=None):
 
 	# Input layer, as usual:
 	network = InputLayer(
-						shape=(None, 2, X_train.shape[2], X_train.shape[3]),
+						shape=(None, 2, in_shape_1, in_shape_2),
 						input_var=input_var,
 						name="input_layer")
 

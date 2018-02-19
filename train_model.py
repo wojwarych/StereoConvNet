@@ -1,4 +1,6 @@
 import matplotlib
+import matplotlib.cm as cm
+import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import numpy as np
 import theano
@@ -10,9 +12,9 @@ import nn_model
 
 if __name__ == "__main__":
 
-	X_train,X_left_train,X_right_train, y_train, X_val,X_left_val,X_right_val, y_val = nn_model.main(model='cnn', num_epochs=100)
+	X_train, X_left_train, X_right_train, y_train, X_val, X_left_val, X_right_val, y_val = nn_model.main(model='cnn', num_epochs=45)
 
-	X_train,X_left_train,X_right_train, y_train, X_valid,X_left_valid,X_right_valid, y_valid = nn_model.load_StereoImages()
+	X_train, X_left_train, X_right_train, y_train, X_valid,X_left_valid, X_right_valid, y_valid = nn_model.load_StereoImages()
 	print(X_train.shape, y_train.shape, X_valid.shape, y_valid.shape)
 
 
