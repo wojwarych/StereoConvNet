@@ -5,14 +5,14 @@ import theano
 import theano.tensor as T
 import lasagne.layers
 
-import draft
+import nn_model
 
 
 if __name__ == "__main__":
 
 	X_train,X_left_train,X_right_train, y_train, X_val,X_left_val,X_right_val, y_val = main(model='cnn', num_epochs=45)
 
-	X_train,X_left_train,X_right_train, y_train, X_valid,X_left_valid,X_right_valid, y_valid = draft.load_StereoImages()
+	X_train,X_left_train,X_right_train, y_train, X_valid,X_left_valid,X_right_valid, y_valid = nn_model.load_StereoImages()
 	print(X_train.shape, y_train.shape, X_valid.shape, y_valid.shape)
 
 
@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
 
 	input_var = T.tensor4('inputs', dtype=theano.config.floatX)
-	network = draft.build_stereo_cnn(input_var)
+	network = nn_model.build_stereo_cnn(input_var)
 	with np.load('model_stereo_v1.2.npz') as f:
 		param_values = [f['arr_%d' % i] for i in range(len(f.files))]
 		lasagne.layers.set_all_param_values(network, param_values)
